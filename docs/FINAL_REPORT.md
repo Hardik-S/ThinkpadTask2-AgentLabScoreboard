@@ -105,5 +105,20 @@ Browser smoke check:
 
 ## Publication state
 
-GitHub publication details are recorded in the final chat handoff after preflight
-and push complete.
+Preflight before GitHub publication:
+
+- Target: `Hardik-S/ThinkpadTask2-AgentLabScoreboard`
+- Account: `Hardik-S`
+- Remote: `not-checked` before initialization
+- Public/private/ACL state: `unknown` before repo creation
+- Preflight result: `auth-ok,no-remote`
+- Dirty paths: none
+- Attempts used: 0
+- Next safe action: create the target GitHub repo before publishing
+
+Published repository:
+
+- URL: `https://github.com/Hardik-S/ThinkpadTask2-AgentLabScoreboard`
+- Visibility: public
+- Default branch: `main`
+- Initial pushed commit: `4ea3b56ee9d3423430e686f968aa1639df92db43`
