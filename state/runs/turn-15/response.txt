@@ -1,0 +1,50 @@
+```javascript
+// Import necessary libraries for token and cost estimation
+const axios = require('axios');
+
+// Function to fetch token and cost estimates
+async function getEstimates() {
+  try {
+    // Fetch token estimate from an external API
+    const tokenResponse = await axios.get('https://api.example.com/token-estimate');
+    const tokenCost = tokenResponse.data.cost;
+
+    // Fetch cost estimate for a specific operation from another API
+    const operationResponse = await axios.get('https://api.example.com/operation-cost?operation=specific-operation');
+    const operationCost = operationResponse.data.cost;
+
+    return { tokenCost, operationCost };
+  } catch (error) {
+    console.error('Error fetching estimates:', error);
+    return null;
+  }
+}
+
+// Function to render the app with token and cost estimates
+function renderApp() {
+  // Fetch estimates
+  const estimates = getEstimates();
+
+  if (!estimates) {
+    console.log('Failed to fetch estimates.');
+    return;
+  }
+
+  // Render the app content
+  const content = `
+    <h1>Agent Lab Scoreboard</h1>
+    <p>Total Token Cost: $${estimates.tokenCost.toFixed(2)}</p>
+    <p>Operation Cost: $${estimates.operationCost.toFixed(2)}</p>
+    <!-- Existing rendering behavior -->
+    <div id="scoreboard">
+      <!-- Render scoreboard data here -->
+    </div>
+  `;
+
+  // Update the DOM with the rendered content
+  document.getElementById('app').innerHTML = content;
+}
+
+// Initialize the app
+renderApp();
+```

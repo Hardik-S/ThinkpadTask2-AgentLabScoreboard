@@ -1,0 +1,2 @@
+PASS target exists scripts/validate-static-site.js
+FAIL node --check scripts/validate-static-site.js: Command '['node', '--check', 'C:\\Users\\hshre\\OneDrive\\Documents\\42 - Agents\\Codex\\April\\ProjectX\\ThinkpadTask2-AgentLabScoreboard\\state\\raw-agent-lab-scoreboard\\scripts\\validate-static-site.js']' returned non-zero exit status 1.

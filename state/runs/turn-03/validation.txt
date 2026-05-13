@@ -1,0 +1,2 @@
+PASS target exists data/scoreboard.json
+FAIL json parse data/scoreboard.json: Expecting value: line 1 column 1 (char 0)

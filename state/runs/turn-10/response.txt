@@ -1,0 +1,40 @@
+```javascript
+// app.js
+
+const { createServer } = require('http');
+const fs = require('fs');
+
+const PORT = process.env.PORT || 3000;
+
+function loadScoreboard() {
+    try {
+        const scoreboardData = fs.readFileSync('data/scoreboard.json', 'utf8');
+        return JSON.parse(scoreboardData);
+    } catch (error) {
+        console.error('Failed to load scoreboard data:', error);
+        return [];
+    }
+}
+
+function renderTable(data) {
+    let tableHTML = '<table border="1"><thead><tr><th>Turn</th><th>Status</th></tr></thead><tbody>';
+    data.forEach(item => {
+        tableHTML += `<tr><td>${item.turn}</td><td>${item.status}</td></tr>`;
+    });
+    tableHTML += '</tbody></table>';
+    return tableHTML;
+}
+
+function handleRequest(req, res) {
+    const scoreboard = loadScoreboard();
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(renderTable(scoreboard));
+}
+
+const server = createServer(handleRequest);
+server.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
+```
+
+This script sets up a simple HTTP server that reads the `scoreboard.json` file and renders it as an HTML table. The `loadScoreboard` function attempts to parse the JSON data from the file, and the `renderTable` function constructs the HTML for the table based on the parsed data.

@@ -1,0 +1,52 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Agent Lab Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Local Agent Lab Scoreboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#data">Data</a></li>
+                <li><a href="#status">Status</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>This dashboard provides a summary of the local agent lab's performance over 24 turns.</p>
+        </section>
+
+        <section id="data">
+            <h2>Data</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Turn</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="status">
+            <h2>Status</h2>
+            <p>Total turns: 24<br>Completed: 16<br>Failed or Timed Out: 8</p>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
+```

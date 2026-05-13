@@ -1,0 +1,36 @@
+```javascript
+// app.js
+
+// Import necessary modules
+const express = require('express');
+const path = require('path');
+
+// Initialize Express application
+const app = express();
+
+// Serve static files from 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Lessons learned section based on Task 1 evidence
+app.get('/lessons-learned', (req, res) => {
+    const lessonsLearned = `
+        <h2>Lessons Learned</h2>
+        <ul>
+            <li>Prior project: Thinkpad24TurnsTest / ThinkPad Build Observatory - This experience provided valuable insights into the importance of clear and concise prompts for better performance.</li>
+            <li>Worker/model: ThinkPad e530 running local qwen2.5-coder:3b through direct Ollama HTTP - The use of a specific model and environment can significantly impact performance and reliability.</li>
+            <li>Turn budget: 24 turns, max 5 minutes each - Setting clear expectations for time management is crucial to maintaining productivity and avoiding burnout.</li>
+            <li>Outcome: 24 attempted, 16 completed, 8 failed or timed out - Understanding the success rate of previous attempts helps in identifying areas for improvement and optimizing future efforts.</li>
+            <li>Strong prompt shape: direct-file and micro-markdown prompts - Using clear and concise prompts can lead to more efficient and effective communication with the model.</li>
+            <li>Weak prompt shape: broad JSON envelopes, larger source/context dumps, and multi-file turns - This approach may not be as efficient or reliable for certain tasks due to increased complexity and potential errors.</li>
+            <li>Raw artifact quality: useful docs and partial static assets, but not publication-ready - Ensuring that artifacts are of high quality is essential for maintaining the integrity and reliability of the project.</li>
+        </ul>
+    `;
+    res.send(lessonsLearned);
+});
+
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+```

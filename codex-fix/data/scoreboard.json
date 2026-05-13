@@ -1,0 +1,60 @@
+[
+  {
+    "id": "thinkpad-task-1-build-observatory",
+    "workerModel": "ThinkPad e530 / qwen2.5-coder:3b",
+    "taskAttempted": "Build a portfolio-visible static site called ThinkPad Build Observatory over 24 supervised local-model turns.",
+    "turnsAttempted": 24,
+    "completedTurns": 16,
+    "failedOrTimedOutTurns": 8,
+    "timeoutFailureRate": 0.3333,
+    "rawArtifactQuality": "Partial but useful. The raw run produced documentation, data sketches, HTML/CSS, and several planning notes, but the final raw app was not publication-ready.",
+    "codexRepairBurden": "High. Codex repaired invalid JavaScript, incorrect/fake seed data, a fenced validator script, and the final presentation layer inside a separate codex-fix boundary.",
+    "validationStatus": "Repaired artifact passed syntax, JSON, redaction, and browser smoke checks in the final Codex phase. Raw artifact failed JavaScript and validator syntax checks.",
+    "tokenCostEstimate": {
+      "localModelCostUsd": 0,
+      "tokenCountKnown": false,
+      "estimate": "No provider billing. Time cost was dominated by 24 local CPU-bound turns capped at five minutes each."
+    },
+    "lessonsLearned": [
+      "Direct-file Markdown and micro-prompts were the most reliable prompt shapes.",
+      "Broad JSON envelopes and larger context dumps increased malformed output and timeout risk.",
+      "Small local models can produce useful provenance and partial static assets, but final publication still needs Codex verification.",
+      "Raw output should remain immutable once the worker phase ends so failures stay observable."
+    ],
+    "recommendedFutureUseCases": [
+      "Run logs and retrospectives",
+      "Schema drafts and file manifests",
+      "First-pass documentation",
+      "Small static UI slices that Codex can later verify and repair"
+    ]
+  },
+  {
+    "id": "thinkpad-run-two-agent-lab-scoreboard",
+    "workerModel": "ThinkPad-local Ollama / qwen2.5-coder:3b",
+    "taskAttempted": "Build Local Agent Lab Scoreboard, a static dashboard comparing local and agent workflows, seeded from Task 1 evidence.",
+    "turnsAttempted": 24,
+    "completedTurns": 24,
+    "failedOrTimedOutTurns": 0,
+    "timeoutFailureRate": 0,
+    "rawArtifactQuality": "Broken runtime with useful documentation. All turns returned responses, but raw JSON and JavaScript were fenced or malformed, so Codex repaired a separate copy.",
+    "codexRepairBurden": "High. Codex created valid data, rewrote the runtime app, added a real validator, and kept raw evidence unchanged under state/.",
+    "validationStatus": "Raw artifact failed JSON and JavaScript syntax checks. Repaired artifact is the portfolio-visible version.",
+    "tokenCostEstimate": {
+      "localModelCostUsd": 0,
+      "tokenCountKnown": false,
+      "estimate": "Local Ollama run with no API billing. Wall-clock worker time was about 59.9 minutes across 24 turns."
+    },
+    "lessonsLearned": [
+      "The model completed every turn after the model was pulled locally, but response-format compliance stayed weak.",
+      "Switching to micro-direct prompts reduced context size but did not stop Markdown fencing in code files.",
+      "A scoreboard should track format failures separately from timeouts because completed turns can still produce broken artifacts.",
+      "Codex repair should be expected for any public-facing artifact from this small worker."
+    ],
+    "recommendedFutureUseCases": [
+      "Evidence-heavy dashboards",
+      "Offline portfolio prototypes",
+      "Workflow comparison tables",
+      "Documentation-first agent lab experiments"
+    ]
+  }
+]

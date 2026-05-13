@@ -1,0 +1,2 @@
+PASS target exists app.js
+FAIL node --check app.js: Command '['node', '--check', 'C:\\Users\\hshre\\OneDrive\\Documents\\42 - Agents\\Codex\\April\\ProjectX\\ThinkpadTask2-AgentLabScoreboard\\state\\raw-agent-lab-scoreboard\\app.js']' returned non-zero exit status 1.

@@ -1,0 +1,2 @@
+PASS target exists app.js
+NOTE JavaScript syntax check deferred to Codex verification

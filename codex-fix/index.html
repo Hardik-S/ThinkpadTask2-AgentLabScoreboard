@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Agent Lab Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="label">Offline dashboard</p>
+        <h1>Local Agent Lab Scoreboard</h1>
+        <p class="lede">A portfolio-visible record of local worker runs, repair burden, validation evidence, and future fit.</p>
+      </div>
+      <nav aria-label="Dashboard sections">
+        <a href="#scoreboard">Scoreboard</a>
+        <a href="#comparisons">Comparisons</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#validation">Validation</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="metrics" aria-labelledby="metrics-title">
+        <div>
+          <p class="label">Current corpus</p>
+          <h2 id="metrics-title">Two supervised local-worker experiments</h2>
+        </div>
+        <div id="metric-grid" class="metric-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="scoreboard" class="section" aria-labelledby="scoreboard-title">
+        <div class="section-heading">
+          <p class="label">Run evidence</p>
+          <h2 id="scoreboard-title">Scoreboard</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Local agent workflow comparison seeded from Task 1 and Task 2 evidence.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Worker/model</th>
+                <th scope="col">Task attempted</th>
+                <th scope="col">Turns</th>
+                <th scope="col">Failure rate</th>
+                <th scope="col">Raw quality</th>
+                <th scope="col">Codex repair</th>
+                <th scope="col">Validation</th>
+              </tr>
+            </thead>
+            <tbody id="scoreboard-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="comparisons" class="section split" aria-labelledby="comparisons-title">
+        <div class="section-heading">
+          <p class="label">Workflow fit</p>
+          <h2 id="comparisons-title">Comparison cards</h2>
+        </div>
+        <div id="comparison-grid" class="card-grid"></div>
+      </section>
+
+      <section id="lessons" class="section split" aria-labelledby="lessons-title">
+        <div class="section-heading">
+          <p class="label">Operating guidance</p>
+          <h2 id="lessons-title">Lessons and future use</h2>
+        </div>
+        <div id="lesson-grid" class="lesson-grid"></div>
+      </section>
+
+      <section id="validation" class="section validation" aria-labelledby="validation-title">
+        <div>
+          <p class="label">Status</p>
+          <h2 id="validation-title">Raw output stayed frozen; Codex repaired a copy</h2>
+          <p>The raw Qwen output remains under <code>state/</code>. This repaired dashboard lives under <code>codex-fix/</code> because the raw runtime failed JSON and JavaScript checks.</p>
+        </div>
+        <ul id="validation-list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

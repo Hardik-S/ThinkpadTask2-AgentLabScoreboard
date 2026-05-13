@@ -1,0 +1,18 @@
+```json
+[
+    {
+        "run_id": "ThinkPad24TurnsTest",
+        "worker_model": "Qwen2.5-coder:3b",
+        "turn_budget": 24,
+        "turn_duration": "5 minutes each",
+        "attempts": 24,
+        "completed": 16,
+        "failed_or_timed_out": 8,
+        "prompt_shape": "direct-file and micro-markdown prompts",
+        "raw_artifact_quality": "useful docs and partial static assets, but not publication-ready",
+        "codex_repair_burden": "high; repaired JavaScript, data truthfulness, validator script, and presentation layer in codex-fix/",
+        "validation_issue": "raw validator script was Markdown-fenced and failed node --check",
+        "recommendation": "use local Qwen for docs, schemas, run logs, narrow static assets, and cheap exploratory implementation; keep Codex responsible for final verification and publication."
+    }
+]
+```
