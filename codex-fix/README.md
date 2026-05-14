@@ -23,6 +23,11 @@ Run from this folder:
 
 ```powershell
 node --check app.js
+node scripts\app-render.test.js
 node scripts\validate-static-site.js
 python -m json.tool data\scoreboard.json
 ```
+
+The render test exists because the dashboard uses `innerHTML` for compact static
+rendering. Future worker rows can contain model-generated text, so every
+run-derived field must be escaped before it is inserted into the page.

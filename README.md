@@ -40,6 +40,7 @@ python -m http.server 49312 --bind 127.0.0.1
 
 ```powershell
 node --check codex-fix\app.js
+node codex-fix\scripts\app-render.test.js
 node codex-fix\scripts\validate-static-site.js
 python -m json.tool codex-fix\data\scoreboard.json
 powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\scripts\codex-public-redaction-scan.ps1" -Path codex-fix

@@ -47,6 +47,15 @@ function pct(value) {
   return `${Math.round(value * 100)}%`;
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function statusClass(text) {
   const lower = text.toLowerCase();
   if (lower.includes("passed")) return "status";
@@ -76,13 +85,13 @@ function renderMetrics() {
 function renderTable() {
   scoreboardBody.innerHTML = runs.map((run) => `
     <tr>
-      <td><strong>${run.workerModel}</strong></td>
-      <td>${run.taskAttempted}</td>
+      <td><strong>${escapeHtml(run.workerModel)}</strong></td>
+      <td>${escapeHtml(run.taskAttempted)}</td>
       <td>${run.completedTurns}/${run.turnsAttempted}</td>
       <td>${pct(run.timeoutFailureRate)}</td>
-      <td>${run.rawArtifactQuality}</td>
-      <td>${run.codexRepairBurden}</td>
-      <td><span class="${statusClass(run.validationStatus)}">${run.validationStatus}</span></td>
+      <td>${escapeHtml(run.rawArtifactQuality)}</td>
+      <td>${escapeHtml(run.codexRepairBurden)}</td>
+      <td><span class="${statusClass(run.validationStatus)}">${escapeHtml(run.validationStatus)}</span></td>
     </tr>
   `).join("");
 }
@@ -96,8 +105,8 @@ function renderComparisons() {
   ];
   comparisonGrid.innerHTML = cards.map(([title, body]) => `
     <article class="card">
-      <h3>${title}</h3>
-      <p>${body}</p>
+      <h3>${escapeHtml(title)}</h3>
+      <p>${escapeHtml(body)}</p>
     </article>
   `).join("");
 }
@@ -105,12 +114,12 @@ function renderComparisons() {
 function renderLessons() {
   lessonGrid.innerHTML = runs.map((run) => `
     <article class="lesson">
-      <h3>${run.workerModel}</h3>
+      <h3>${escapeHtml(run.workerModel)}</h3>
       <ul>
-        ${run.lessonsLearned.map((item) => `<li>${item}</li>`).join("")}
+        ${run.lessonsLearned.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
       </ul>
-      <p><strong>Future use:</strong> ${run.recommendedFutureUseCases.join(", ")}.</p>
-      <p><strong>Cost estimate:</strong> ${run.tokenCostEstimate}</p>
+      <p><strong>Future use:</strong> ${escapeHtml(run.recommendedFutureUseCases.join(", "))}.</p>
+      <p><strong>Cost estimate:</strong> ${escapeHtml(run.tokenCostEstimate)}</p>
     </article>
   `).join("");
 }
@@ -123,7 +132,7 @@ function renderValidation() {
     "codex-fix/data/scoreboard.json is valid JSON.",
     "codex-fix/app.js is browser-native and does not use network calls."
   ];
-  validationList.innerHTML = checks.map((check) => `<li>${check}</li>`).join("");
+  validationList.innerHTML = checks.map((check) => `<li>${escapeHtml(check)}</li>`).join("");
 }
 
 function render() {
